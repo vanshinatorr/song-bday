@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Love!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .lock-screen, .content {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .lock-screen {
+            display: block;
+        }
+        .container {
+            padding: 20px;
+            border: 2px solid #fff;
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            text-shadow: 2px 2px 4px #000000;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #ff6f61;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff3d2e;
+        }
+        .message {
+            margin-top: 20px;
+            color: #ffe4e1;
+            font-size: 1rem;
+        }
+        img {
+            max-width: 100%;
+            max-height: 70vh;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .surprise {
+            font-size: 2rem;
+            color: #ff6f61;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out forwards;
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Lock Screen -->
+    <div class="lock-screen container">
+        <h1>Enter Passcode to Unlock ❤️</h1>
+        <input type="password" id="passcode" placeholder="Enter 4-digit passcode" maxlength="4" style="font-size: 1.2rem; padding: 10px; border-radius: 5px; border: none;">
+        <br><br>
+        <button onclick="unlock()">Unlock</button>
+        <p id="error" style="color: #ff3d2e; font-weight: bold; display: none;">Incorrect Passcode 😟</p>
+        <!-- Hint message visible before entering password -->
+        <p id="hint" style="color: #ffeb3b; font-size: 1rem;">You can get the password from @vanshinatorr on Instagram or ask the admin for access. 🕵️‍♂️</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content container">
+        <img src="suhu.vansh.jpg" alt="Your Photo">
+        <p id="love-paragraph" class="message">
+            Happy Birthday, my love! 🥰 You are my everything, and I'm so lucky to have you in my life. Every moment with you is a treasure. I hope this special day brings you as much joy as you bring to my heart. ❤️
+        </p>
+        <button onclick="showSurprise()">Click for a Surprise!</button>
+        <p id="surprise" class="surprise">I Love You! 💖</p>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="bg-music" autoplay loop>
+        <source src="https://example.com/your-romantic-song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const correctPasscode = "1234"; // Set your passcode here
+
+        function unlock() {
+            const enteredPasscode = document.getElementById("passcode").value;
+            if (enteredPasscode === correctPasscode) {
+                document.querySelector(".lock-screen").style.display = "none";
+                document.querySelector(".content").style.display = "block";
+
+                // Play background music
+                const bgMusic = document.getElementById("bg-music");
+                bgMusic.play();
+                bgMusic.volume = 0.5; // Moderate volume
+            } else {
+                document.getElementById("error").style.display = "block"; // Show error message
+            }
+        }
+
+        function showSurprise() {
+            document.getElementById("surprise").style.display = "block";
+        }
+    </script>
+</body>
+</html>
